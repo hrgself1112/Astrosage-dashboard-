@@ -25,6 +25,8 @@ const UserManager: React.FC = () => {
   });
   const [showBulkActions, setShowBulkActions] = useState(false);
   const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
 
   useEffect(() => {
     fetchUsers();

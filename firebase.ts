@@ -27,4 +27,7 @@ const db = getFirestore(app);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
-export { db, auth };
+// Initialize Firebase Storage and get a reference to the service
+const storage = getStorage(app);
+
+export { db, auth, storage };

@@ -34,7 +34,7 @@ import {
 } from '@firebase/auth';
 import { SpinnerIcon } from './components/icons/SpinnerIcon';
 
-export type Page = 'home' | 'documents' | 'search' | 'editor' | 'image-generator' | 'panelists';
+export type Page = 'home' | 'documents' | 'search' | 'editor' | 'image-generator' | 'panelists' | 'admin';
 
 const getFormattedDate = (date: Date): string => {
   return date.toISOString().split('T')[0];

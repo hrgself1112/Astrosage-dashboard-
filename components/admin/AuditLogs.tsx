@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { MagnifyingGlassIcon, ArrowDownTrayIcon, FunnelIcon, CalendarIcon } from '../icons';
+import { MagnifyingGlassIcon } from '../icons/MagnifyingGlassIcon';
+import { ArrowDownTrayIcon } from '../icons/ArrowDownTrayIcon';
+import { FunnelIcon } from '../icons/FunnelIcon';
+import { CalendarIcon } from '../icons/CalendarIcon';
 import { db } from '../../firebase';
 import { collection, query, orderBy, limit, where, getDocs } from '@firebase/firestore';
 import type { AuditLog, AuditLogFilters } from '../../types';

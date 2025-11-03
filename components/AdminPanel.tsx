@@ -6,6 +6,10 @@ import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
 import UserManager from './admin/UserManager';
 import RoleManager from './admin/RoleManager';
 import AuditLogs from './admin/AuditLogs';
+import SessionTimeoutWarning from './SessionTimeoutWarning';
+import { useSessionTimeout } from '../hooks/useSessionTimeout';
+import { signOut } from '@firebase/auth';
+import { auth } from '../firebase';
 import type { User as FirebaseUser } from '@firebase/auth';
 
 interface AdminPanelProps {

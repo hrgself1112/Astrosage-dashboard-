@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { InformationCircleIcon, ShieldCheckIcon, EyeIcon, PencilIcon, UserGroupIcon, CogIcon } from '../icons';
+import { InformationCircleIcon } from '../icons/InformationCircleIcon';
+import { ShieldCheckIcon } from '../icons/ShieldCheckIcon';
+import { EyeIcon } from '../icons/EyeIcon';
+import { PencilIcon } from '../icons/PencilIcon';
+import { UserGroupIcon } from '../icons/UserGroupIcon';
+import { Cog6ToothIcon as CogIcon } from '../icons/Cog6ToothIcon';
 import type { UserRole, RolePermissions } from '../../types';
 
 interface RoleDefinition {

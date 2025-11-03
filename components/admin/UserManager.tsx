@@ -530,6 +530,16 @@ const UserManager: React.FC = () => {
         )}
       </div>
 
+      {/* Pagination */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+        totalItems={filteredUsers.length}
+        itemsPerPage={itemsPerPage}
+      />
+      </div>
+
       {/* User Modal */}
       {showUserModal && (
         <UserModal

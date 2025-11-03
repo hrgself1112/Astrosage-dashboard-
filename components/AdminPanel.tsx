@@ -119,6 +119,14 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ user, onBack }) => {
         {activeTab === 'roles' && <RoleManager />}
         {activeTab === 'audit' && <AuditLogs />}
       </div>
+
+      {/* Session Timeout Warning */}
+      <SessionTimeoutWarning
+        isOpen={isWarningModalOpen}
+        remainingMinutes={remainingTime}
+        onExtendSession={extendSession}
+        onSignOut={handleSignOut}
+      />
     </div>
   );
 };

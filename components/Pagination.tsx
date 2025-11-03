@@ -1,5 +1,6 @@
 import React from 'react';
-import { ChevronLeftIcon, ChevronRightIcon } from './icons';
+import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
+import { ChevronRightIcon } from './icons/ChevronRightIcon';
 
 interface PaginationProps {
   currentPage: number;

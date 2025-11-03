@@ -315,13 +315,22 @@ const UserManager: React.FC = () => {
             <h2 className="text-xl font-semibold text-m3-on-surface">User Management</h2>
             <p className="text-sm text-m3-on-surface-variant">Manage system users and their permissions</p>
           </div>
-          <button
-            onClick={handleCreateUser}
-            className="flex items-center gap-2 px-4 py-2 bg-m3-primary text-m3-on-primary rounded-full hover:bg-m3-primary-container transition-colors"
-          >
-            <PlusIcon className="w-4 h-4" />
-            Add User
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setShowBulkInviteModal(true)}
+              className="flex items-center gap-2 px-4 py-2 border border-m3-outline rounded-lg text-m3-on-surface hover:bg-m3-surface-variant transition-colors"
+            >
+              <PlusIcon className="w-4 h-4" />
+              Bulk Invite
+            </button>
+            <button
+              onClick={handleCreateUser}
+              className="flex items-center gap-2 px-4 py-2 bg-m3-primary text-m3-on-primary rounded-full hover:bg-m3-primary-container transition-colors"
+            >
+              <PlusIcon className="w-4 h-4" />
+              Add User
+            </button>
+          </div>
         </div>
 
         {/* Filters */}

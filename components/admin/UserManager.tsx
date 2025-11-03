@@ -127,9 +127,124 @@ const UserManager: React.FC = () => {
       const userRef = doc(db, 'users', user.id);
       await deleteDoc(userRef);
       setUsers(users.filter(u => u.id !== user.id));
+      setSelectedUsers(selectedUsers.filter(id => id !== user.id));
     } catch (error) {
       console.error('Error deleting user:', error);
       alert('Failed to delete user');
+    }
+  };
+
+  // Bulk operations
+  const handleSelectUser = (userId: string) => {
+    setSelectedUsers(prev =>
+      prev.includes(userId)
+        ? prev.filter(id => id !== userId)
+        : [...prev, userId]
+    );
+  };
+
+  const handleSelectAllUsers = () => {
+    if (selectedUsers.length === filteredUsers.length) {
+      setSelectedUsers([]);
+    } else {
+      setSelectedUsers(filteredUsers.map(user => user.id));
+    }
+  };
+
+  const handleBulkRoleChange = async (newRole: UserRole) => {
+    if (selectedUsers.length === 0) {
+      alert('Please select users to update');
+      return;
+    }
+
+    if (!window.confirm(`Are you sure you want to change the role of ${selectedUsers.length} user(s) to ${newRole}?`)) {
+      return;
+    }
+
+    try {
+      const updatePromises = selectedUsers.map(userId => {
+        const userRef = doc(db, 'users', userId);
+        return updateDoc(userRef, {
+          role: newRole,
+          lastActiveAt: new Date().toISOString()
+        });
+      });
+
+      await Promise.all(updatePromises);
+
+      setUsers(users.map(user =>
+        selectedUsers.includes(user.id)
+          ? { ...user, role: newRole }
+          : user
+      ));
+
+      setSelectedUsers([]);
+      alert(`Successfully updated role for ${selectedUsers.length} user(s)`);
+    } catch (error) {
+      console.error('Error updating user roles:', error);
+      alert('Failed to update user roles');
+    }
+  };
+
+  const handleBulkStatusChange = async (newStatus: UserStatus) => {
+    if (selectedUsers.length === 0) {
+      alert('Please select users to update');
+      return;
+    }
+
+    if (!window.confirm(`Are you sure you want to change the status of ${selectedUsers.length} user(s) to ${newStatus}?`)) {
+      return;
+    }
+
+    try {
+      const updatePromises = selectedUsers.map(userId => {
+        const userRef = doc(db, 'users', userId);
+        return updateDoc(userRef, {
+          status: newStatus,
+          lastActiveAt: new Date().toISOString()
+        });
+      });
+
+      await Promise.all(updatePromises);
+
+      setUsers(users.map(user =>
+        selectedUsers.includes(user.id)
+          ? { ...user, status: newStatus }
+          : user
+      ));
+
+      setSelectedUsers([]);
+      alert(`Successfully updated status for ${selectedUsers.length} user(s)`);
+    } catch (error) {
+      console.error('Error updating user status:', error);
+      alert('Failed to update user status');
+    }
+  };
+
+  const handleBulkDelete = async () => {
+    if (selectedUsers.length === 0) {
+      alert('Please select users to delete');
+      return;
+    }
+
+    if (!window.confirm(`Are you sure you want to delete ${selectedUsers.length} user(s)? This action cannot be undone.`)) {
+      return;
+    }
+
+    try {
+      const deletePromises = selectedUsers.map(userId => {
+        const userRef = doc(db, 'users', userId);
+        return deleteDoc(userRef);
+      });
+
+      await Promise.all(deletePromises);
+
+      setUsers(users.filter(user => !selectedUsers.includes(user.id)));
+      setSelectedUsers([]);
+      alert(`Successfully deleted ${selectedUsers.length} user(s)`);
+    } catch (error) {
+      console.error('Error deleting users:', error);
+      alert('Failed to delete users');
     }
   };
 

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { PhotoIcon, CloudArrowUpIcon, XMarkIcon, DownloadIcon, ArrowPathIcon } from './icons';
 import { uploadToStorage, processImageBackgroundRemoval } from '../services/backgroundRemovalService';
+import '../styles/background-remover.css';
 
 interface UploadedImage {
   id: string;

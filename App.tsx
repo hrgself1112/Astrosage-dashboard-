@@ -35,8 +35,9 @@ import {
 import { SpinnerIcon } from './components/icons/SpinnerIcon';
 import AdminPanel from './components/AdminPanel';
 import AdminRouteGuard from './components/AdminRouteGuard';
+import BackgroundRemover from './components/BackgroundRemover';
 
-export type Page = 'home' | 'documents' | 'search' | 'editor' | 'image-generator' | 'panelists' | 'admin';
+export type Page = 'home' | 'documents' | 'search' | 'editor' | 'image-generator' | 'panelists' | 'admin' | 'background-remover';
 
 const getFormattedDate = (date: Date): string => {
   return date.toISOString().split('T')[0];
@@ -295,6 +296,8 @@ const App: React.FC = () => {
               onBack={() => setCurrentPage('home')}
             />
           </AdminRouteGuard>
+        ) : currentPage === 'background-remover' ? (
+          <BackgroundRemover />
         ) : (
           <main className="flex-1 overflow-y-auto p-6 lg:p-8">
             <div className="max-w-7xl mx-auto">

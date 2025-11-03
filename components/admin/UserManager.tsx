@@ -449,7 +449,7 @@ const UserManager: React.FC = () => {
             </tr>
           </thead>
           <tbody className="bg-m3-surface divide-y divide-m3-outline-variant">
-            {filteredUsers.map((user) => (
+            {paginatedUsers.map((user) => (
               <tr key={user.id} className="hover:bg-m3-surface-variant transition-colors">
                 <td className="px-6 py-4 whitespace-nowrap">
                   <input

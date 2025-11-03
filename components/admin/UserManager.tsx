@@ -28,6 +28,7 @@ const UserManager: React.FC = () => {
   const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
+  const [showBulkInviteModal, setShowBulkInviteModal] = useState(false);
 
   useEffect(() => {
     fetchUsers();

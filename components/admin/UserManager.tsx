@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { PlusIcon, MagnifyingGlassIcon, FunnelIcon, EllipsisVerticalIcon } from '../icons';
+import { PlusIcon } from '../icons/PlusIcon';
+import { MagnifyingGlassIcon } from '../icons/MagnifyingGlassIcon';
+import { FunnelIcon } from '../icons/FunnelIcon';
+import { EllipsisVerticalIcon } from '../icons/EllipsisHorizontalIcon';
 import { UserModal } from './UserModal';
 import { db } from '../../firebase';
 import { collection, query, where, getDocs, doc, updateDoc, deleteDoc, orderBy, limit } from '@firebase/firestore';

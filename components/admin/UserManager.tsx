@@ -105,6 +105,14 @@ const UserManager: React.FC = () => {
     setSelectedUsers([]); // Clear selection when changing pages
   };
 
+  const handleBulkInviteComplete = (results: any[]) => {
+    // Refresh users list if any invitations were successful
+    const successfulInvites = results.filter(r => r.success);
+    if (successfulInvites.length > 0) {
+      fetchUsers();
+    }
+  };
+
   const handleCreateUser = () => {
     setSelectedUser(null);
     setModalMode('create');

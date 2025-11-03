@@ -35,8 +35,9 @@ import {
 import { SpinnerIcon } from './components/icons/SpinnerIcon';
 import AdminPanel from './components/AdminPanel';
 import AdminRouteGuard from './components/AdminRouteGuard';
+import BackgroundRemover from './components/BackgroundRemover';
 
-export type Page = 'home' | 'documents' | 'search' | 'editor' | 'image-generator' | 'panelists' | 'admin';
+export type Page = 'home' | 'documents' | 'search' | 'editor' | 'image-generator' | 'panelists' | 'admin' | 'background-remover';
 
 const getFormattedDate = (date: Date): string => {
   return date.toISOString().split('T')[0];

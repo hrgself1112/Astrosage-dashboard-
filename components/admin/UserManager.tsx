@@ -4,6 +4,7 @@ import { MagnifyingGlassIcon } from '../icons/MagnifyingGlassIcon';
 import { FunnelIcon } from '../icons/FunnelIcon';
 import { EllipsisVerticalIcon } from '../icons/EllipsisHorizontalIcon';
 import { UserModal } from './UserModal';
+import BulkInviteModal from './BulkInviteModal';
 import Pagination from '../Pagination';
 import { db } from '../../firebase';
 import { collection, query, where, getDocs, doc, updateDoc, deleteDoc, orderBy, limit } from '@firebase/firestore';

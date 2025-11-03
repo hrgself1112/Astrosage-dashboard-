@@ -567,6 +567,13 @@ const UserManager: React.FC = () => {
           onSave={handleUserSaved}
         />
       )}
+
+      {/* Bulk Invite Modal */}
+      <BulkInviteModal
+        isOpen={showBulkInviteModal}
+        onClose={() => setShowBulkInviteModal(false)}
+        onInviteComplete={handleBulkInviteComplete}
+      />
     </div>
   );
 };

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { UserIcon, ShieldCheckIcon, ClipboardDocumentListIcon, ArrowLeftIcon } from './icons';
+import { UserIcon } from './icons/UserIcon';
+import { ShieldCheckIcon } from './icons/ShieldCheckIcon';
+import { ClipboardDocumentListIcon } from './icons/ClipboardDocumentListIcon';
+import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
 import UserManager from './admin/UserManager';
 import RoleManager from './admin/RoleManager';
 import AuditLogs from './admin/AuditLogs';

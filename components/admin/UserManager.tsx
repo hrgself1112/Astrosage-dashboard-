@@ -538,7 +538,6 @@ const UserManager: React.FC = () => {
         totalItems={filteredUsers.length}
         itemsPerPage={itemsPerPage}
       />
-      </div>
 
       {/* User Modal */}
       {showUserModal && (

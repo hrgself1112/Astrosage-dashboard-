@@ -33,6 +33,8 @@ import {
 // FIX: Changed firebase/auth to @firebase/auth to fix module resolution errors.
 } from '@firebase/auth';
 import { SpinnerIcon } from './components/icons/SpinnerIcon';
+import AdminPanel from './components/AdminPanel';
+import AdminRouteGuard from './components/AdminRouteGuard';
 
 export type Page = 'home' | 'documents' | 'search' | 'editor' | 'image-generator' | 'panelists' | 'admin';
 

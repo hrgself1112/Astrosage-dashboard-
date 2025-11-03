@@ -433,6 +433,14 @@ const UserManager: React.FC = () => {
             {filteredUsers.map((user) => (
               <tr key={user.id} className="hover:bg-m3-surface-variant transition-colors">
                 <td className="px-6 py-4 whitespace-nowrap">
+                  <input
+                    type="checkbox"
+                    checked={selectedUsers.includes(user.id)}
+                    onChange={() => handleSelectUser(user.id)}
+                    className="h-4 w-4 text-m3-primary focus:ring-m3-primary border-m3-outline rounded"
+                  />
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="h-8 w-8 rounded-full bg-m3-primary-container flex items-center justify-center">
                       <span className="text-sm font-medium text-m3-on-primary-container">

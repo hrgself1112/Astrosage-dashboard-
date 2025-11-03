@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { XMarkIcon } from '../icons';
+import { XMarkIcon } from '../icons/XMarkIcon';
 import { db } from '../../firebase';
 import { doc, setDoc, serverTimestamp } from '@firebase/firestore';
 import type { User, UserRole, UserStatus, RolePermissions } from '../../types';

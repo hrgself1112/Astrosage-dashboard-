@@ -8,6 +8,7 @@ import { Cog6ToothIcon } from './icons/Cog6ToothIcon';
 import { Bars3Icon } from './icons/Bars3Icon';
 import { PhotoIcon } from './icons/PhotoIcon';
 import { UserGroupIcon } from './icons/UserGroupIcon';
+import { ShieldIcon } from './icons/ShieldIcon';
 
 interface SidebarProps {
   isSidebarOpen: boolean;

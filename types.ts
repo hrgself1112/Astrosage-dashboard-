@@ -38,3 +38,56 @@ export interface Panelist {
     };
   } | Record<string, any>;
 }
+
+// Admin Panel Types
+export type UserRole = 'admin' | 'editor' | 'viewer';
+export type UserStatus = 'active' | 'inactive' | 'suspended';
+
+export interface User {
+  id: string; // Firebase Auth UID
+  email: string;
+  displayName?: string;
+  role: UserRole;
+  status: UserStatus;
+  createdAt: string;
+  lastActiveAt: string;
+  createdBy?: string; // admin user ID who created this user
+  permissions?: RolePermissions;
+}
+
+export interface RolePermissions {
+  canManageUsers: boolean;
+  canManageDocuments: boolean;
+  canManagePanelists: boolean;
+  canViewAuditLogs: boolean;
+  canManageSystem: boolean;
+}
+
+export interface AuditLog {
+  id: string;
+  userId: string;
+  action: string;
+  resource: string;
+  details: Record<string, any>;
+  ipAddress?: string;
+  userAgent?: string;
+  timestamp: string;
+}
+
+export interface UserFilters {
+  search: string;
+  role: UserRole | 'all';
+  status: UserStatus | 'all';
+  sortBy: 'name' | 'email' | 'role' | 'status' | 'createdAt' | 'lastActiveAt';
+  sortOrder: 'asc' | 'desc';
+}
+
+export interface AuditLogFilters {
+  userId?: string;
+  action: string;
+  dateRange: {
+    start: string;
+    end: string;
+  };
+  searchTerm: string;
+}

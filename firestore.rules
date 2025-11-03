@@ -1,0 +1,124 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function getUserRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && getUserRole() == 'admin';
+    }
+
+    function isEditor() {
+      return isAuthenticated() && getUserRole() == 'editor';
+    }
+
+    function isViewer() {
+      return isAuthenticated() && getUserRole() == 'viewer';
+    }
+
+    function canManageUsers() {
+      return isAdmin();
+    }
+
+    function canManageDocuments() {
+      return isAdmin() || isEditor();
+    }
+
+    function canManagePanelists() {
+      return isAdmin() || isEditor();
+    }
+
+    function canViewAuditLogs() {
+      return isAdmin();
+    }
+
+    // Users collection rules
+    match /users/{userId} {
+      allow read: if isAuthenticated() && (
+        isAdmin() ||
+        request.auth.uid == userId
+      );
+
+      allow create: if isAdmin();
+
+      allow update: if isAdmin() || request.auth.uid == userId;
+
+      allow delete: if isAdmin();
+    }
+
+    // Documents collection rules
+    match /documents/{documentId} {
+      allow read: if isAuthenticated() && (
+        isAdmin() ||
+        resource.data.accessList[request.auth.uid] == true ||
+        resource.data.ownerId == request.auth.uid ||
+        (isEditor() && resource.data.accessList[request.auth.uid] == true)
+      );
+
+      allow create: if isAuthenticated() && canManageDocuments();
+
+      allow update: if isAuthenticated() && (
+        isAdmin() ||
+        (resource.data.ownerId == request.auth.uid && canManageDocuments()) ||
+        (isEditor() && resource.data.accessList[request.auth.uid] == true)
+      );
+
+      allow delete: if isAuthenticated() && (
+        isAdmin() ||
+        (resource.data.ownerId == request.auth.uid && canManageDocuments())
+      );
+    }
+
+    // Panelists collection rules
+    match /panelists/{panelistId} {
+      allow read: if isAuthenticated() && (
+        isAdmin() ||
+        request.auth.uid == panelistId ||
+        canManagePanelists()
+      );
+
+      allow create: if isAuthenticated() && canManagePanelists();
+
+      allow update: if isAuthenticated() && (
+        isAdmin() ||
+        request.auth.uid == panelistId ||
+        canManagePanelists()
+      );
+
+      allow delete: if isAdmin();
+    }
+
+    // Audit Logs collection rules
+    match /auditLogs/{logId} {
+      allow read: if canViewAuditLogs();
+
+      allow create: if isAuthenticated() && (
+        isAdmin() ||
+        request.auth.uid == resource.data.userId
+      );
+
+      allow update: if isAdmin();
+
+      allow delete: if isAdmin();
+    }
+
+    // System configuration collection rules (if exists)
+    match /system/{configId} {
+      allow read: if isAdmin();
+
+      allow write: if isAdmin();
+    }
+
+    // Deny all other reads/writes for security
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

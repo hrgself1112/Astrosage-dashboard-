@@ -8,6 +8,7 @@ import { Cog6ToothIcon } from './icons/Cog6ToothIcon';
 import { Bars3Icon } from './icons/Bars3Icon';
 import { PhotoIcon } from './icons/PhotoIcon';
 import { UserGroupIcon } from './icons/UserGroupIcon';
+import { ShieldIcon } from './icons/ShieldIcon';
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -23,6 +24,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar, current
     { id: 'panelists', icon: UserGroupIcon, label: 'Panelists' },
     { id: 'image-generator', icon: PhotoIcon, label: 'Image Generator' },
     { id: 'search', icon: MagnifyingGlassIcon, label: 'Search' },
+    { id: 'admin', icon: ShieldIcon, label: 'Admin', adminOnly: true },
   ];
 
   return (

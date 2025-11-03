@@ -1,0 +1,332 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  /* Material Design 3 Light Theme */
+  --m3-surface: 236, 240, 245;
+  --m3-surface-container: 255, 255, 255;
+  --m3-surface-container-high: 247, 250, 252;
+  --m3-surface-container-highest: 233, 236, 244;
+  --m3-on-surface: 29, 29, 31;
+  --m3-on-surface-variant: 73, 80, 87;
+  --m3-outline: 189, 193, 198;
+  --m3-outline-variant: 222, 227, 230;
+  --m3-primary: 25, 118, 210;
+  --m3-on-primary: 255, 255, 255;
+  --m3-primary-container: 219, 234, 254;
+  --m3-on-primary-container: 7, 57, 112;
+  --m3-secondary: 105, 120, 134;
+  --m3-on-secondary: 255, 255, 255;
+  --m3-secondary-container: 236, 241, 247;
+  --m3-on-secondary-container: 44, 58, 71;
+  --m3-tertiary: 172, 93, 122;
+  --m3-on-tertiary: 255, 255, 255;
+  --m3-tertiary-container: 255, 218, 227;
+  --m3-on-tertiary-container: 66, 28, 46;
+  --m3-error: 239, 68, 68;
+  --m3-on-error: 255, 255, 255;
+  --m3-error-container: 255, 218, 214;
+  --m3-on-error-container: 65, 28, 28;
+
+  /* Custom CSS variables */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221.2 83.2% 53.3%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Material Design 3 Dark Theme */
+  --m3-surface: 24, 26, 31;
+  --m3-surface-container: 33, 35, 43;
+  --m3-surface-container-high: 41, 44, 56;
+  --m3-surface-container-highest: 49, 52, 68;
+  --m3-on-surface: 233, 236, 244;
+  --m3-on-surface-variant: 172, 176, 189;
+  --m3-outline: 78, 84, 97;
+  --m3-outline-variant: 49, 52, 68;
+  --m3-primary: 173, 216, 230;
+  --m3-on-primary: 28, 48, 58;
+  --m3-primary-container: 8, 76, 97;
+  --m3-on-primary-container: 207, 235, 255;
+  --m3-secondary: 199, 210, 224;
+  --m3-on-secondary: 44, 58, 71;
+  --m3-secondary-container: 56, 71, 88;
+  --m3-on-secondary-container: 219, 234, 254;
+  --m3-tertiary: 255, 184, 197;
+  --m3-on-tertiary: 76, 35, 52;
+  --m3-tertiary-container: 98, 56, 73;
+  --m3-on-tertiary-container: 255, 216, 228;
+  --m3-error: 249, 113, 113;
+  --m3-on-error: 28, 27, 27;
+  --m3-error-container: 66, 28, 28;
+  --m3-on-error-container: 255, 218, 214;
+
+  /* Custom CSS variables for dark mode */
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 84% 4.9%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 212.7 26.8% 83.9%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+/* Material Design 3 Surface Colors */
+.bg-m3-surface {
+  background-color: rgb(var(--m3-surface));
+}
+
+.bg-m3-surface-container {
+  background-color: rgb(var(--m3-surface-container));
+}
+
+.bg-m3-surface-container-high {
+  background-color: rgb(var(--m3-surface-container-high));
+}
+
+.bg-m3-surface-container-highest {
+  background-color: rgb(var(--m3-surface-container-highest));
+}
+
+.bg-m3-primary {
+  background-color: rgb(var(--m3-primary));
+}
+
+.bg-m3-primary-container {
+  background-color: rgb(var(--m3-primary-container));
+}
+
+.bg-m3-secondary-container {
+  background-color: rgb(var(--m3-secondary-container));
+}
+
+.bg-m3-tertiary-container {
+  background-color: rgb(var(--m3-tertiary-container));
+}
+
+.bg-m3-error-container {
+  background-color: rgb(var(--m3-error-container));
+}
+
+/* Material Design 3 Text Colors */
+.text-m3-on-surface {
+  color: rgb(var(--m3-on-surface));
+}
+
+.text-m3-on-surface-variant {
+  color: rgb(var(--m3-on-surface-variant));
+}
+
+.text-m3-on-primary {
+  color: rgb(var(--m3-on-primary));
+}
+
+.text-m3-on-primary-container {
+  color: rgb(var(--m3-on-primary-container));
+}
+
+.text-m3-on-secondary {
+  color: rgb(var(--m3-on-secondary));
+}
+
+.text-m3-on-secondary-container {
+  color: rgb(var(--m3-on-secondary-container));
+}
+
+.text-m3-on-tertiary {
+  color: rgb(var(--m3-on-tertiary));
+}
+
+.text-m3-on-tertiary-container {
+  color: rgb(var(--m3-on-tertiary-container));
+}
+
+.text-m3-on-error {
+  color: rgb(var(--m3-on-error));
+}
+
+.text-m3-on-error-container {
+  color: rgb(var(--m3-on-error-container));
+}
+
+.text-m3-primary {
+  color: rgb(var(--m3-primary));
+}
+
+.text-m3-secondary {
+  color: rgb(var(--m3-secondary));
+}
+
+.text-m3-tertiary {
+  color: rgb(var(--m3-tertiary));
+}
+
+.text-m3-error {
+  color: rgb(var(--m3-error));
+}
+
+/* Material Design 3 Border Colors */
+.border-m3-outline {
+  border-color: rgb(var(--m3-outline));
+}
+
+.border-m3-outline-variant {
+  border-color: rgb(var(--m3-outline-variant));
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--m3-surface-container));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--m3-on-surface-variant));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--m3-on-surface));
+}
+
+/* Animation classes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-m3-primary focus:ring-offset-2 focus:ring-offset-m3-surface;
+}
+
+/* Transition utilities */
+.transition-material {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Checkered background for transparent images */
+.bg-checkered {
+  background-image:
+    linear-gradient(45deg, #ccc 25%, transparent 25%),
+    linear-gradient(-45deg, #ccc 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ccc 75%),
+    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-break-before {
+    page-break-before: always;
+  }
+
+  .print-break-after {
+    page-break-after: always;
+  }
+
+  .print-break-inside-avoid {
+    page-break-inside: avoid;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --m3-outline: 0, 0, 0;
+    --m3-outline-variant: 128, 128, 128;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

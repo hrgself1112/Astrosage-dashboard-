@@ -281,13 +281,20 @@ const App: React.FC = () => {
         ) : currentPage === 'image-generator' ? (
             <ImageGenerator />
         ) : currentPage === 'panelists' ? (
-            <PanelistManager 
+            <PanelistManager
               panelists={panelists}
               onAdd={handleAddPanelist}
               onUpdate={handleUpdatePanelist}
               onDelete={handleDeletePanelist}
               onSendPasswordReset={handleSendPasswordReset}
             />
+        ) : currentPage === 'admin' ? (
+          <AdminRouteGuard user={user}>
+            <AdminPanel
+              user={user}
+              onBack={() => setCurrentPage('home')}
+            />
+          </AdminRouteGuard>
         ) : (
           <main className="flex-1 overflow-y-auto p-6 lg:p-8">
             <div className="max-w-7xl mx-auto">

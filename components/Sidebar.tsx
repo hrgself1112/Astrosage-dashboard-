@@ -24,6 +24,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar, current
     { id: 'panelists', icon: UserGroupIcon, label: 'Panelists' },
     { id: 'image-generator', icon: PhotoIcon, label: 'Image Generator' },
     { id: 'search', icon: MagnifyingGlassIcon, label: 'Search' },
+    { id: 'admin', icon: ShieldIcon, label: 'Admin', adminOnly: true },
   ];
 
   return (

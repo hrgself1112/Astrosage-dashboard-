@@ -36,6 +36,10 @@ const UserManager: React.FC = () => {
     applyFilters();
   }, [users, filters]);
 
+  useEffect(() => {
+    setCurrentPage(1); // Reset to first page when filters change
+  }, [filters]);
+
   const fetchUsers = async () => {
     try {
       const usersRef = collection(db, 'users');

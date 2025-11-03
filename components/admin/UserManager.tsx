@@ -401,6 +401,14 @@ const UserManager: React.FC = () => {
         <table className="w-full">
           <thead className="bg-m3-surface-variant sticky top-0">
             <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-m3-on-surface-variant uppercase tracking-wider w-12">
+                <input
+                  type="checkbox"
+                  checked={selectedUsers.length === filteredUsers.length && filteredUsers.length > 0}
+                  onChange={handleSelectAllUsers}
+                  className="h-4 w-4 text-m3-primary focus:ring-m3-primary border-m3-outline rounded"
+                />
+              </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-m3-on-surface-variant uppercase tracking-wider">
                 User
               </th>

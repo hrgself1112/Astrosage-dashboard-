@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['DM Sans', 'sans-serif'],
+            },
+            colors: {
+              'm3-primary': '#6750a4',
+              'm3-on-primary': '#ffffff',
+              'm3-primary-container': '#eaddff',
+              'm3-on-primary-container': '#21005d',
+              'm3-secondary-container': '#e8def8',
+              'm3-on-secondary-container': '#1d192b',
+              'm3-surface': '#fef7ff',
+              'm3-surface-container': '#f3edf7',
+              'm3-surface-container-high': '#eee8f4',
+              'm3-surface-variant': '#e7e0ec',
+              'm3-on-surface': '#1c1b1f',
+              'm3-on-surface-variant': '#49454e',
+              'm3-outline': '#79747e',
+              'm3-error': '#b3261e',
+              'm3-tertiary': '#006d63',
+              'm3-on-tertiary': '#ffffff',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^18.2.0",
+    "react-dom": "https://aistudiocdn.com/react-dom@^18.2.0",
+    "react-dom/client": "https://aistudiocdn.com/react-dom@^18.2.0/client",
+    "react-quill": "https://aistudiocdn.com/react-quill@^2.0.0",
+    "quill": "https://aistudiocdn.com/quill@^2.0.2",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^18.2.0/",
+    "react/": "https://aistudiocdn.com/react@^18.2.0/",
+    "jszip": "https://aistudiocdn.com/jszip@^3.10.1",
+    "firebase/app": "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js",
+    "firebase/firestore": "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js",
+    "firebase/auth": "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js",
+    "firebase/": "https://aistudiocdn.com/firebase@^12.4.0/",
+    "@firebase/firestore": "https://aistudiocdn.com/@firebase/firestore@^4.9.2",
+    "@firebase/auth": "https://aistudiocdn.com/@firebase/auth@^1.11.0",
+    "@firebase/app": "https://aistudiocdn.com/@firebase/app@^0.14.4"
+  }
+}
+</script>
+<style>
+  /* Custom Quill styles to match M3 theme */
+  .ql-toolbar {
+    border-radius: 12px 12px 0 0 !important;
+    background-color: #f3edf7 !important; /* m3-surface-container */
+    border-color: #e7e0ec !important; /* m3-surface-variant */
+    border-bottom: 0 !important;
+    padding: 12px !important;
+  }
+  .ql-snow .ql-picker-label:hover, .ql-snow .ql-picker-label.ql-active,
+  .ql-snow .ql-toolbar button:hover, .ql-snow .ql-toolbar button:focus,
+  .ql-snow .ql-toolbar button.ql-active {
+    background-color: #e8def8 !important; /* m3-secondary-container */
+    color: #1d192b !important; /* m3-on-secondary-container */
+  }
+  .ql-snow .ql-toolbar button:hover .ql-stroke, .ql-snow .ql-toolbar button.ql-active .ql-stroke {
+    stroke: #1d192b !important;
+  }
+  .ql-container.ql-snow {
+    border-radius: 0 0 12px 12px !important;
+    border-color: #e7e0ec !important; /* m3-surface-variant */
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #1c1b1f; /* m3-on-surface */
+    background-color: #fef7ff;
+  }
+  .ql-editor {
+    min-height: 400px;
+    padding: 24px !important;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .ql-editor.ql-blank::before {
+    font-style: normal !important;
+    color: #49454e !important; /* m3-on-surface-variant */
+    left: 24px !important;
+  }
+  .ql-snow .ql-stroke {
+    stroke: #49454e; /* m3-on-surface-variant */
+  }
+  .ql-snow .ql-picker-label {
+    color: #49454e;
+  }
+  .ql-snow .ql-picker-options {
+    background-color: #f3edf7;
+    border-color: #79747e !important;
+  }
+</style>
+</head>
+  <body class="bg-m3-surface-container font-sans">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

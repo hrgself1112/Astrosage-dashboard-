@@ -350,6 +350,52 @@ const UserManager: React.FC = () => {
         </div>
       </div>
 
+      {/* Bulk Actions Bar */}
+      {selectedUsers.length > 0 && (
+        <div className="px-6 py-3 bg-m3-primary-container border-b border-m3-outline-variant">
+          <div className="flex items-center justify-between">
+            <div className="text-sm text-m3-on-primary-container">
+              {selectedUsers.length} user{selectedUsers.length !== 1 ? 's' : ''} selected
+            </div>
+            <div className="flex items-center gap-3">
+              <select
+                onChange={(e) => e.target.value && handleBulkRoleChange(e.target.value as UserRole)}
+                className="px-3 py-1 text-sm border border-m3-outline rounded bg-m3-surface text-m3-on-surface focus:outline-none focus:ring-2 focus:ring-m3-primary"
+              >
+                <option value="">Change Role</option>
+                <option value="admin">Admin</option>
+                <option value="editor">Editor</option>
+                <option value="viewer">Viewer</option>
+              </select>
+
+              <select
+                onChange={(e) => e.target.value && handleBulkStatusChange(e.target.value as UserStatus)}
+                className="px-3 py-1 text-sm border border-m3-outline rounded bg-m3-surface text-m3-on-surface focus:outline-none focus:ring-2 focus:ring-m3-primary"
+              >
+                <option value="">Change Status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="suspended">Suspended</option>
+              </select>
+
+              <button
+                onClick={handleBulkDelete}
+                className="px-3 py-1 text-sm bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+              >
+                Delete Selected
+              </button>
+
+              <button
+                onClick={() => setSelectedUsers([])}
+                className="px-3 py-1 text-sm border border-m3-outline rounded text-m3-on-surface hover:bg-m3-surface-variant transition-colors"
+              >
+                Clear Selection
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* User Table */}
       <div className="flex-1 overflow-auto">
         <table className="w-full">

@@ -22,6 +22,31 @@ type AdminTab = 'users' | 'roles' | 'audit';
 const AdminPanel: React.FC<AdminPanelProps> = ({ user, onBack }) => {
   const [activeTab, setActiveTab] = useState<AdminTab>('users');
 
+  // Session timeout for admin users (30 minutes with 5 minute warning)
+  const {
+    extendSession,
+    showWarning,
+    remainingTime,
+    isWarningModalOpen,
+    setIsWarningModalOpen
+  } = useSessionTimeout({
+    timeoutMinutes: 30,
+    warningMinutes: 5,
+    onTimeout: async () => {
+      // Handle session timeout
+      onBack();
+    }
+  });
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      onBack();
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
+
   const tabs = [
     {
       id: 'users' as AdminTab,

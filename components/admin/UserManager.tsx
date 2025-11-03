@@ -91,6 +91,18 @@ const UserManager: React.FC = () => {
     setFilteredUsers(filtered);
   };
 
+  // Pagination calculations
+  const totalPages = Math.ceil(filteredUsers.length / itemsPerPage);
+  const paginatedUsers = filteredUsers.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    setSelectedUsers([]); // Clear selection when changing pages
+  };
+
   const handleCreateUser = () => {
     setSelectedUser(null);
     setModalMode('create');

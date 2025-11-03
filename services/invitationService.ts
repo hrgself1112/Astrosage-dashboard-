@@ -4,7 +4,7 @@ import {
   signOut
 } from '@firebase/auth';
 import { doc, setDoc, serverTimestamp } from '@firebase/firestore';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import type { User, UserRole } from '../types';
 
 export class InvitationService {
